@@ -1,4 +1,7 @@
-﻿using Business.Abstracts;
+﻿using AutoMapper;
+using Business.Abstracts;
+using Business.Dtos;
+using Business.Request;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using System;
@@ -14,30 +17,35 @@ namespace Business.Concretes
     {
 
         IBrandDal _brandDal;
+        IMapper _mapper;
 
-        public BrandManager(IBrandDal brandDal)
+        public BrandManager(IBrandDal brandDal, IMapper mapper)
         {
             _brandDal = brandDal;
+            _mapper = mapper;   
         }
 
-        public void Add(Brand brand)
+        public void Add(CreateBrandRequest brand)
         {
-            throw new NotImplementedException();
+            Brand brand_ = _mapper.Map<Brand>(brand);
+            _brandDal.Add(brand_);
         }
 
-        public void Delete(Brand brand)
+        public void Delete(DeleteBrandRequest brand)
         {
-            throw new NotImplementedException();
+            Brand brand_ = _mapper.Map<Brand>(brand);
+            _brandDal.Delete(brand_);
         }
 
-        public List<Brand> GetAll()
+        public List<BrandDto> GetAll()
         {
-          return   _brandDal.GetList();
+            return _mapper.Map < List< BrandDto >> (_brandDal.GetList());
         }
 
-        public void Update(Brand brand)
+        public void Update(UpdateBrandRequest brand)
         {
-            throw new NotImplementedException();
+            Brand brand_ = _mapper.Map<Brand>(brand);
+            _brandDal.Update(brand_);
         }
     }
 }

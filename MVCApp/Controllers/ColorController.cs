@@ -6,20 +6,19 @@ using DataAccess.Concretes.EntityFramework;
 
 namespace MVCApp.Controllers
 {
-    public class CarController : Controller
+    public class ColorController : Controller
     {
-        ICarService _carService;
+        IColorService _colorService;
 
-        public CarController(ICarService carService)
+        public ColorController(IColorService colorService)
         {
-            this._carService = carService;
+            this._colorService = colorService;
         }
 
         public IActionResult Index()
         {
 
-            return View(this._carService.GetAll());
+            return View(this._colorService.GetAll());
         }
     }
 }
-
