@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.BusinessRules;
 using Business.Dtos;
 using Business.Request;
+using Business.ValidationRules.FluentValidation;
+using Core.Utilities.Validation;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,26 +21,24 @@ namespace Business.Concretes
 
         ICarDal _carDal;
         IMapper _mapper;
+        CarBusinessRules _carBusinessRules;
 
-        public CarManager(ICarDal carDal,IMapper mapper)
+        public CarManager(ICarDal carDal,IMapper mapper, CarBusinessRules carBusinessRules)
         {
             _carDal = carDal;
             _mapper = mapper;
+            _carBusinessRules = carBusinessRules;
         }
 
         public void Add(CreateCarRequest car)
         {
-
-            Car car_ = _mapper.Map <Car>(car);
-            _carDal.Add(car_);  
-        }
-
-        public bool Check(CreateCarRequest car)
-        {
+            ValidationTool.Validate(new CreateCarValidator(), car);
+            _carBusinessRules.CheckIfCarNameExists(car.Name);
             Car car_ = _mapper.Map<Car>(car);
-            return _carDal.CheckCar(car_);
+            _carDal.Add(car_);
+
         }
-    
+       
         public void Delete(DeleteCarRequest car)
         {
             Car car_ = _mapper.Map<Car>(car);
@@ -50,6 +52,7 @@ namespace Business.Concretes
 
         public void Update(UpdateCarRequest car)
         {
+            ValidationTool.Validate(new UpdateCarValidator(), car);
             Car car_ = _mapper.Map<Car>(car);
             _carDal.Update(car_);
         }

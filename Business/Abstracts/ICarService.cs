@@ -12,6 +12,6 @@ namespace Business.Abstracts
         void Update(UpdateCarRequest car);
         void Delete(DeleteCarRequest car);
 
-        bool Check(CreateCarRequest car);
+       
     }
 }

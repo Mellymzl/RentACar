@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.BusinessRules;
 using Business.Dtos;
 using Business.Request;
+using Business.ValidationRules.FluentValidation;
+using Core.Utilities.Validation;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +22,19 @@ namespace Business.Concretes
 
         IBrandDal _brandDal;
         IMapper _mapper;
-
-        public BrandManager(IBrandDal brandDal, IMapper mapper)
+        BrandBusinessRules _brandBusinessRoles;
+        public BrandManager(IBrandDal brandDal, IMapper mapper, BrandBusinessRules brandBusinessRoles)
         {
             _brandDal = brandDal;
-            _mapper = mapper;   
+            _mapper = mapper; 
+            _brandBusinessRoles = brandBusinessRoles;
+            
         }
 
         public void Add(CreateBrandRequest brand)
         {
+            ValidationTool.Validate(new CreateBrandValidator(), brand);
+            _brandBusinessRoles.CheckIfBrandNameExists(brand.Name);
             Brand brand_ = _mapper.Map<Brand>(brand);
             _brandDal.Add(brand_);
         }
@@ -44,6 +52,8 @@ namespace Business.Concretes
 
         public void Update(UpdateBrandRequest brand)
         {
+
+            ValidationTool.Validate(new UpdateBrandValidator(), brand);
             Brand brand_ = _mapper.Map<Brand>(brand);
             _brandDal.Update(brand_);
         }

@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.BusinessRules;
 using Business.Dtos;
 using Business.Request;
+using Business.ValidationRules.FluentValidation;
+using Core.Utilities.Validation;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +21,19 @@ namespace Business.Concretes
 
         IColorDal _colorDal;
         IMapper _mapper;
+        ColorBusinessRules _colorBusinessRules;
 
-        public ColorManager(IColorDal colorDal,IMapper mapper)
+        public ColorManager(IColorDal colorDal,IMapper mapper, ColorBusinessRules colorBusinessRules)
         {
             _colorDal = colorDal;
             _mapper = mapper;   
+            _colorBusinessRules = colorBusinessRules;   
         }
 
         public void Add(CreateColorRequest color)
         {
+            ValidationTool.Validate(new CreateColorValidator(), color);
+            _colorBusinessRules.CheckIfColorNameExists(color.Name);
             Color color_ = _mapper.Map<Color>(color);
             _colorDal.Add(color_);
         }
@@ -43,6 +51,7 @@ namespace Business.Concretes
 
         public void Update(UpdateColorRequest color)
         {
+            ValidationTool.Validate(new UpdateColorValidator(), color);
             Color color_ = _mapper.Map<Color>(color);
             _colorDal.Update(color_);
         }

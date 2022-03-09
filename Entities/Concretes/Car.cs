@@ -18,7 +18,7 @@ namespace Entities.Concretes
         public Color Color { get; set; }
         public Brand Brand { get; set; }
 
-        
+        public List<CarMaintenance> CarMaintenances { get; set; }
 
     }
 }

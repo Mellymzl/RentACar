@@ -7,6 +7,6 @@ namespace DataAccess.Abstracts
     {
         List<Car> GetAllWithColorAndBrand();
 
-        bool CheckCar(Car car);
+       
     }
 }

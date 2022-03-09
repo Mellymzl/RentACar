@@ -27,7 +27,6 @@ namespace WebAPI.Controllers
 
         public void Add( CreateCarRequest createCar)
         {
-           if(! _carService.Check(createCar))
           _carService.Add( createCar);    
 
         }

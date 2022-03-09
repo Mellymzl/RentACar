@@ -3,21 +3,26 @@ using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework.Contexts;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DataAccess.Concretes.EntityFramework
 {
-    public class EfCarDal : EfEntityRepositoryBase<Car, NorthwindContext>, ICarDal
+    public class EfCarMaintenanceDal : EfEntityRepositoryBase<CarMaintenance, NorthwindContext>, ICarMaintenanceDal
     {
-        public List<Car> GetAllWithColorAndBrand()
+        public List<CarMaintenance> GetAllwithCar()
         {
             using (NorthwindContext context = new NorthwindContext())
             {
 
-                return context.Cars.Include(i => i.Brand).Include(i => i.Color).ToList();
+                return context.CarMaintenances.Include(i=>i.Car). ToList();
 
             }
         }
 
-      
+       
     }
 }
