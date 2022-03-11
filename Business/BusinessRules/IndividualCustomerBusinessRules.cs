@@ -19,7 +19,7 @@ namespace Business.BusinessRules
 
         public void CheckIfCustomerNameExists(string fname, string lname)
         {
-            var kisi = _individualDal.Get(a => a.CustomerFirstName == fname&&a.CustomerLastName==lname);
+            var kisi = _individualDal.Get(a => a.FirstName == fname&&a.LastName==lname);
             if (kisi != null)
             { throw new BusinessException("Bu isimde kişi daha önce eklenmiştir"); }
 

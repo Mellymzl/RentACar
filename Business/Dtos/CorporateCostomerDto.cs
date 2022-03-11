@@ -12,5 +12,7 @@ namespace Business.Dtos
 
         public string CompanyName { get; set; }
         public string TaxNumber { get; set; }
+        public string UserName { get; set; }
+        public string EMail { get; set; }
     }
 }

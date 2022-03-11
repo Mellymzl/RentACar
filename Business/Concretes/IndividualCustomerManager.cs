@@ -32,7 +32,7 @@ namespace Business.Concretes
         public void Add(CreateIndividualCustomerRequest individualCostomer)
         {
             ValidationTool.Validate(new CreateIndividualCustomerValidator(), individualCostomer);
-            _individiualBusinessRules.CheckIfCustomerNameExists(individualCostomer.CustomerFirstName, individualCostomer.CustomerLastName);
+            _individiualBusinessRules.CheckIfCustomerNameExists(individualCostomer.FirstName, individualCostomer.LastName);
             IndividualCustomer customer = _mapper.Map<IndividualCustomer>(individualCostomer);
             _individualDal.Add(customer);
         }

@@ -10,8 +10,8 @@ namespace Entities.Concretes
     public class IndividualCustomer:AplicationUser, IEntity
     {
       
-        public string CustomerFirstName { get; set; }
-        public string CustomerLastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string NationalIdentityNumber { get; set; }
        
      

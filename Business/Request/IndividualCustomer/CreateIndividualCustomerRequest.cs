@@ -9,11 +9,12 @@ namespace Business.Request
     public  class CreateIndividualCustomerRequest
     {
 
-        public string CustomerFirstName { get; set; }
-        public string CustomerLastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string NationalIdentityNumber { get; set; }
 
         public string UserName { get; set; }
         public string EMail { get; set; }
+        public string Password { get; set; }
     }
 }
