@@ -25,21 +25,21 @@ namespace WebAPI.Controllers
 
         [HttpPost("add")]
 
-        public void Add(CreateCarMaintenancesRequest createMCar)
+        public void Add(CreateCarMaintenanceRequest createMCar)
         {
             _carMService.Add(createMCar);
 
         }
         [HttpPost("update")]
 
-        public void Update(UpdateCarMaintenancesRequest updateMCar)
+        public void Update(UpdateCarMaintenanceRequest updateMCar)
         {
             _carMService.Update(updateMCar);
 
         }
         [HttpPost("delete")]
 
-        public void Delete(DeleteCarMaintenancesRequest deleteMCar)
+        public void Delete(DeleteCarMaintenanceRequest deleteMCar)
         {
             _carMService.Delete(deleteMCar);
 

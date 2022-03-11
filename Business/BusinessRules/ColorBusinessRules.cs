@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstracts;
+﻿using Core.CrossCuttingConcerns.Exceptions;
+using DataAccess.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Business.BusinessRules
         {
             var color = _colorDal.Get(a => a.Name == colorName);
             if (color != null)
-            { throw new Exception("Bu isimde daha önce renk eklenmiştir"); }
+            { throw new BusinessException("Bu isimde daha önce renk eklenmiştir"); }
 
 
         }

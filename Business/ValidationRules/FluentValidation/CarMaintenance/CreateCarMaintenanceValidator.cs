@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class UpdateCarMaintenanceValidator : AbstractValidator<UpdateCarMaintenancesRequest>
+    public class CreateCarMaintenanceValidator : AbstractValidator<CreateCarMaintenanceRequest>
     {
-        public UpdateCarMaintenanceValidator()
+        public CreateCarMaintenanceValidator()
         {
-            RuleFor(r => r.ReturnDate).NotEmpty();
+            RuleFor(r => r.SendDate).NotEmpty();
             RuleFor(r => r.CarId).NotEmpty();
         }
     }

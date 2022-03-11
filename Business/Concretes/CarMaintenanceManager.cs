@@ -28,7 +28,7 @@ namespace Business.Concretes
             _carMaintenance = carMaintenance;
         }
 
-        public void Add(CreateCarMaintenancesRequest carMain)
+        public void Add(CreateCarMaintenanceRequest carMain)
         {
             ValidationTool.Validate(new CreateCarMaintenanceValidator(), carMain);
            _carMaintenance.CheckIfCarMaintenanceCarExists(carMain.CarId);
@@ -36,7 +36,7 @@ namespace Business.Concretes
             _carMaintenancesDal.Add(carM_);
         }
 
-        public void Delete(DeleteCarMaintenancesRequest carMain)
+        public void Delete(DeleteCarMaintenanceRequest carMain)
         {
             CarMaintenance carM_ = _mapper.Map<CarMaintenance>(carMain);
             _carMaintenancesDal.Delete(carM_);
@@ -52,7 +52,7 @@ namespace Business.Concretes
             return _mapper.Map<List<CarMaintenancesDto>>(_carMaintenancesDal.GetList(a=>a.CarId==carId));
         }
 
-        public void Update(UpdateCarMaintenancesRequest carMain)
+        public void Update(UpdateCarMaintenanceRequest carMain)
         {
             ValidationTool.Validate(new UpdateCarMaintenanceValidator(), carMain);
             CarMaintenance carM_ = _mapper.Map<CarMaintenance>(carMain);

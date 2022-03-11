@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstracts;
+﻿using Core.CrossCuttingConcerns.Exceptions;
+using DataAccess.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Business.BusinessRules
         {
             var car = _carDal.Get(p => p.Name == carName);
             if (car != null)
-            { throw new Exception("Bu isimde daha önce araba eklenmiştir"); }
+            { throw new BusinessException("Bu isimde daha önce araba eklenmiştir"); }
 
         }
     }

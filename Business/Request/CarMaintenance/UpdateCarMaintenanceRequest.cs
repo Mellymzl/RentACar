@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Business.Request
 {
-    public  class CreateCarMaintenancesRequest
+    public  class UpdateCarMaintenanceRequest
     {
-
+        public int Id { get; set; }
         public string Description { get; set; }
+        public DateTime ReturnDate { get; set; }
         public DateTime SendDate { get; set; }
-
+     
         public int CarId { get; set; }
 
     }

@@ -19,15 +19,15 @@ namespace Business.Profiles
              
                .ReverseMap();
 
-            CreateMap<CarMaintenance, CreateCarMaintenancesRequest>()
+            CreateMap<CarMaintenance, CreateCarMaintenanceRequest>()
                  .ForMember(p => p.CarId, opt => opt.MapFrom(p => p.Car.Id))
                 
                  .ReverseMap();
-            CreateMap<CarMaintenance, UpdateCarMaintenancesRequest>()
+            CreateMap<CarMaintenance, UpdateCarMaintenanceRequest>()
                .ForMember(p => p.CarId, opt => opt.MapFrom(p => p.Car.Id))
 
                .ReverseMap();
-            CreateMap<CarMaintenance, DeleteCarMaintenancesRequest>()
+            CreateMap<CarMaintenance, DeleteCarMaintenanceRequest>()
               
                .ReverseMap();
 

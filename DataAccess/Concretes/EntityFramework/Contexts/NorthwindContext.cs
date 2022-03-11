@@ -18,6 +18,8 @@ namespace DataAccess.Concretes.EntityFramework.Contexts
         public DbSet<Car> Cars { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<CarMaintenance> CarMaintenances { get; set; }
+        public DbSet<CorporateCustomer> CorporateCustomers { get; set; }
+        public DbSet<IndividualCustomer> IndividualCustomers { get; set; }
 
     }
 }

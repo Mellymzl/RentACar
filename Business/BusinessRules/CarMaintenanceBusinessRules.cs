@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstracts;
+﻿using Core.CrossCuttingConcerns.Exceptions;
+using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,7 +23,7 @@ namespace Business.BusinessRules
         {
             var carM = _carMaintenanceDal.Get(p => p.Id == carId && p.ReturnDate ==null);
             if (carM != null)
-            { throw new Exception("Bu araç bakımdadır."); }
+            { throw new BusinessException("Bu araç bakımdadır."); }
 
 
         }

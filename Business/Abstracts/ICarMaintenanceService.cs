@@ -13,9 +13,9 @@ namespace Business.Abstracts
         List<CarMaintenancesDto> GetAll();
         List<CarMaintenancesDto> GetByCarId(int carId);
 
-        void Add(CreateCarMaintenancesRequest carMain);
-        void Update(UpdateCarMaintenancesRequest carMain);
-        void Delete(DeleteCarMaintenancesRequest carMain);
+        void Add(CreateCarMaintenanceRequest carMain);
+        void Update(UpdateCarMaintenanceRequest carMain);
+        void Delete(DeleteCarMaintenanceRequest carMain);
 
     }
 }

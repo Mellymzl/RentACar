@@ -27,14 +27,21 @@ namespace Business
             services.AddSingleton<ICarService, CarManager>();
             services.AddSingleton<IColorService, ColorManager>();
             services.AddSingleton<ICarMaintenanceService,CarMaintenanceManager>();
+            services.AddSingleton<IIndividualCustomerService, IndividualCustomerManager>();
+            services.AddSingleton<ICorporateCustomerService, CorporateCustomerManager>();
+          
             services.AddSingleton<IBrandDal, EfBrandDal>();
             services.AddSingleton<IColorDal, EfColorDal>();
             services.AddSingleton<ICarDal, EfCarDal>();
             services.AddSingleton<ICarMaintenanceDal, EfCarMaintenanceDal>();
+            services.AddSingleton< IIndividualCustomerDal, EfIndividualCustomerDal> ();
+            services.AddSingleton<ICorporateCustomerDal, EfCorporateCustomerDal> ();
             services.AddSingleton<CarBusinessRules>();
             services.AddSingleton<ColorBusinessRules>();
             services.AddSingleton<BrandBusinessRules>();
             services.AddSingleton<CarMaintenanceBusinessRules>();
+            services.AddSingleton<IndividualCustomerBusinessRules>();
+            services.AddSingleton<CorporateCustomerBusinessRules>();
      
             return services;
         }

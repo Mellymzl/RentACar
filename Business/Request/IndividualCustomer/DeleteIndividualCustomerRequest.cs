@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Request
 {
-    public class DeleteCarMaintenancesRequest
+    public class DeleteIndividualCustomerRequest
     {
 
         public int Id { get; set; }
