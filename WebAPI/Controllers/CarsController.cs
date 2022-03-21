@@ -44,5 +44,12 @@ namespace WebAPI.Controllers
             _carService.Delete(deleteCar);
 
         }
+        [HttpPost("getbyid/{id}")]
+
+        public GetCarDto GetById([FromRoute] int id)
+        {
+            return _carService.GetById(id);
+
+        }
     }
 }

@@ -18,7 +18,10 @@ namespace Business.Profiles
                 .ForMember(p=>p.Brand, opt=>opt.MapFrom(p=>p.Brand.Name))
                 .ForMember(p=>p.Color, opt=>opt.MapFrom(p=>p.Color.Name))
                 .ReverseMap();
-
+            CreateMap<Car, GetCarDto>()
+               .ForMember(p => p.Brand, opt => opt.MapFrom(p => p.Brand.Name))
+               .ForMember(p => p.Color, opt => opt.MapFrom(p => p.Color.Name))
+               .ReverseMap();
             CreateMap<Car, CreateCarRequest>()
                  .ForMember(p => p.BrandId, opt => opt.MapFrom(p => p.Brand.Id))
                  .ForMember(p => p.ColorId, opt => opt.MapFrom(p => p.Color.Id))

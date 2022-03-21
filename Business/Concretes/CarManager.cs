@@ -50,6 +50,11 @@ namespace Business.Concretes
             return _mapper.Map<List <CarDto>>( _carDal.GetAllWithColorAndBrand());
         }
 
+        public GetCarDto GetById(int id)
+        {
+            return _mapper.Map< GetCarDto > (_carDal.Get(p=>p.Id==id));
+        }
+
         public void Update(UpdateCarRequest car)
         {
             ValidationTool.Validate(new UpdateCarValidator(), car);

@@ -18,6 +18,14 @@ namespace DataAccess.Concretes.EntityFramework
             }
         }
 
-      
+        public Car GetCarById(int id)
+        {
+            using (NorthwindContext context = new NorthwindContext())
+            {
+
+                return context.Cars.Where(w=>w.Id==id).Include(i => i.Brand).Include(i => i.Color).FirstOrDefault();
+
+            }
+        }
     }
 }

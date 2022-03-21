@@ -7,7 +7,7 @@ namespace Business.Abstracts
     public interface ICarService
     {
         List<CarDto> GetAll();
-
+        GetCarDto GetById(int id);
         void Add(CreateCarRequest car);
         void Update(UpdateCarRequest car);
         void Delete(DeleteCarRequest car);
