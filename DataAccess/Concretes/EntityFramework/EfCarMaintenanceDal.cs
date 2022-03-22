@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concretes.EntityFramework
 {
-    public class EfCarMaintenanceDal : EfEntityRepositoryBase<CarMaintenance, NorthwindContext>, ICarMaintenanceDal
+    public class EfCarMaintenanceDal : EfEntityRepositoryBase<CarMaintenance, RentACarContext>, ICarMaintenanceDal
     {
         public List<CarMaintenance> GetAllwithCar()
         {
-            using (NorthwindContext context = new NorthwindContext())
+            using (RentACarContext context = new RentACarContext())
             {
 
                 return context.CarMaintenances.Include(i=>i.Car). ToList();

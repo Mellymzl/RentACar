@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concretes.EntityFramework
 {
-    public  class EfCorporateCustomerDal : EfEntityRepositoryBase<CorporateCustomer, NorthwindContext>, ICorporateCustomerDal
+    public  class EfCorporateCustomerDal : EfEntityRepositoryBase<CorporateCustomer, RentACarContext>, ICorporateCustomerDal
     {
     }
 }

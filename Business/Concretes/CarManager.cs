@@ -50,9 +50,15 @@ namespace Business.Concretes
             return _mapper.Map<List <CarDto>>( _carDal.GetAllWithColorAndBrand());
         }
 
+        public List<CarDto> GetByBrandId(int BrandId)
+        {
+            return _mapper.Map<List<CarDto>>(_carDal.GetAllWithColorAndBrand().Where(W=>W.BrandId==BrandId).ToList());
+        }
+
         public GetCarDto GetById(int id)
         {
-            return _mapper.Map< GetCarDto > (_carDal.Get(p=>p.Id==id));
+         
+            return _mapper.Map< GetCarDto > (_carDal.GetCarById(id));
         }
 
         public void Update(UpdateCarRequest car)

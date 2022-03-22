@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concretes.EntityFramework
 {
-    public class EfCarDal : EfEntityRepositoryBase<Car, NorthwindContext>, ICarDal
+    public class EfCarDal : EfEntityRepositoryBase<Car, RentACarContext>, ICarDal
     {
         public List<Car> GetAllWithColorAndBrand()
         {
-            using (NorthwindContext context = new NorthwindContext())
+            using (RentACarContext context = new RentACarContext())
             {
 
                 return context.Cars.Include(i => i.Brand).Include(i => i.Color).ToList();
@@ -20,7 +20,7 @@ namespace DataAccess.Concretes.EntityFramework
 
         public Car GetCarById(int id)
         {
-            using (NorthwindContext context = new NorthwindContext())
+            using (RentACarContext context = new RentACarContext())
             {
 
                 return context.Cars.Where(w=>w.Id==id).Include(i => i.Brand).Include(i => i.Color).FirstOrDefault();

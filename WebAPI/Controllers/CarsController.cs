@@ -51,5 +51,12 @@ namespace WebAPI.Controllers
             return _carService.GetById(id);
 
         }
+
+        [HttpGet("getallbybrand/{brandid}")]
+        public List<CarDto> GetByBrandId([FromRoute] int brandid)
+        {
+            return _carService.GetByBrandId(brandid);
+
+        }
     }
 }
