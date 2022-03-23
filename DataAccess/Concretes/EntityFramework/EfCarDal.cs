@@ -17,7 +17,24 @@ namespace DataAccess.Concretes.EntityFramework
 
             }
         }
+        public List<Car> GetAllWithBrandId(int brandId)
+        {
+            using (RentACarContext context = new RentACarContext())
+            {
 
+                return context.Cars.Where(w=>w.BrandId==brandId).Include(i => i.Brand).Include(i => i.Color).ToList();
+
+            }
+        }
+        public List<Car> GetAllWithColorId(int colorId)
+        {
+            using (RentACarContext context = new RentACarContext())
+            {
+
+                return context.Cars.Where(w=>w.ColorId==colorId).Include(i => i.Brand).Include(i => i.Color).ToList();
+
+            }
+        }
         public Car GetCarById(int id)
         {
             using (RentACarContext context = new RentACarContext())

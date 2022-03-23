@@ -9,5 +9,6 @@ namespace Business.Dtos
     public  class ColorDto
     {
         public string Name { get; set; }
+        public int Id { get; set; } 
     }
 }

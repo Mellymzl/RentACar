@@ -8,6 +8,7 @@ namespace Business.Abstracts
     {
         List<CarDto> GetAll();
         List<CarDto> GetByBrandId(int BrandId);
+        List<CarDto> GetByColorId(int ColorId);
         GetCarDto GetById(int id);
         void Add(CreateCarRequest car);
         void Update(UpdateCarRequest car);

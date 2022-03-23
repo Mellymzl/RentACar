@@ -52,10 +52,16 @@ namespace WebAPI.Controllers
 
         }
 
-        [HttpGet("getallbybrand/{brandid}")]
+        [HttpGet("getallbybrandid/{brandid}")]
         public List<CarDto> GetByBrandId([FromRoute] int brandid)
         {
             return _carService.GetByBrandId(brandid);
+
+        }
+        [HttpGet("getallbycolorid/{colorid}")]
+        public List<CarDto> GetByColorId([FromRoute] int colorid)
+        {
+            return _carService.GetByColorId(colorid);
 
         }
     }

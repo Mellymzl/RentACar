@@ -52,7 +52,11 @@ namespace Business.Concretes
 
         public List<CarDto> GetByBrandId(int BrandId)
         {
-            return _mapper.Map<List<CarDto>>(_carDal.GetAllWithColorAndBrand().Where(W=>W.BrandId==BrandId).ToList());
+            return _mapper.Map<List<CarDto>>(_carDal.GetAllWithBrandId(BrandId));
+        }
+        public List<CarDto> GetByColorId(int ColorId)
+        {
+            return _mapper.Map<List<CarDto>>(_carDal.GetAllWithColorId(ColorId));
         }
 
         public GetCarDto GetById(int id)
