@@ -1,8 +1,10 @@
 ﻿using Business.Abstracts;
 using Business.Dtos;
 using Business.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace WebAPI.Controllers
 {
@@ -17,6 +19,7 @@ namespace WebAPI.Controllers
             this._carService = carService;
         }
         [HttpGet("getall")]
+        [Authorize]
         public List <CarDto> GetAll()
         {
             return _carService.GetAll();    
