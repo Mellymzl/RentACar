@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstracts
 {
-    public interface IUserDal : IEntityRepository<User>
+    public interface IClaimDal : IEntityRepository<OperationClaim>
     {
-        List<OperationClaim> GetClaims(User user);
-
     }
 }

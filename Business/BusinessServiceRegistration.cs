@@ -2,8 +2,10 @@
 using Business.BusinessRules;
 using Business.Concretes;
 using Core.CrossCuttingConcerns.Security.Jwt;
+using Core.Entities;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
+using DataAccess.Concretes.EntityFramework.Contexts;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -32,7 +34,10 @@ namespace Business
             services.AddSingleton<ICorporateCustomerService, CorporateCustomerManager>();
             services.AddSingleton<IAuthService, AuthManager>();
             services.AddSingleton<IUserService,UserManager>();
-            services.AddSingleton<IUserDal,EfUserDal>();
+            services.AddSingleton<IUserDal,EfUserDal >();
+            services.AddSingleton<IUserOperationClaimDal, EfUserOperationClaimDal>();
+            services.AddSingleton<IClaimDal, EfClaimDal>();
+            services.AddSingleton<IClaimService, ClaimManager>();
             services.AddSingleton<ITokenHelper,JwtHelper>();
           
             services.AddSingleton<IBrandDal, EfBrandDal>();
