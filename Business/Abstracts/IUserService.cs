@@ -1,4 +1,5 @@
 ﻿using Business.Dtos;
+using Business.Request;
 using Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Business.Abstracts
         User GetByMail(string email);
         List<UserListDto> GetAll();
 
-        void AddUserClaim(UserOperationClaim userOperationClaim);
+        void AddUserClaim(UserClaimAddRequest userOperationClaim);
         List<UserOperationClaimDto> GetUserClaim();
 
 

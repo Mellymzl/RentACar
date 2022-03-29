@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Dtos;
+using Business.Request;
 using Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Business.Profiles
         public UserMappingProfiles()
         {
             CreateMap<User, UserListDto>().ReverseMap();
+            CreateMap<UserOperationClaim, UserClaimAddRequest>().ReverseMap();
             CreateMap<UserOperationClaim, UserOperationClaimDto>()
                 .ForMember(p => p.FirstName, opt => opt.MapFrom(p => p.User.FirstName))
                 .ForMember(p => p.LastName, opt => opt.MapFrom(p => p.User.LastName))

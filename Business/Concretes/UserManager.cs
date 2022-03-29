@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos;
+using Business.Request;
 using Core.Entities;
 using DataAccess.Abstracts;
 using System;
@@ -44,9 +45,11 @@ namespace Business.Concretes
             return _mapper.Map<List<UserListDto>>(_userDal.GetList());
         }
 
-        public void AddUserClaim(UserOperationClaim userOperationClaim)
+        public void AddUserClaim(UserClaimAddRequest userOperationClaim)
         {
-            _userOperation.Add(userOperationClaim);
+            var userOperationClaim_ = _mapper.Map<UserOperationClaim>(userOperationClaim);
+      
+            _userOperation.Add(userOperationClaim_);
         }
 
         public List<UserOperationClaimDto> GetUserClaim()

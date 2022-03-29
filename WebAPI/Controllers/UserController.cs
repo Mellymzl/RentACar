@@ -1,5 +1,6 @@
 ﻿using Business.Abstracts;
 using Business.Dtos;
+using Business.Request;
 using Core.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,7 @@ namespace WebAPI.Controllers
 
 
         [HttpPost("setuserclaim")]
-        public ActionResult SetUserClaim( UserOperationClaim userOperationClaim)
+        public ActionResult SetUserClaim( UserClaimAddRequest userOperationClaim)
         {
             _userService.AddUserClaim( userOperationClaim);
             return Ok();
