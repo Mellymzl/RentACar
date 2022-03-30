@@ -52,6 +52,8 @@ namespace Business
             services.AddSingleton<CarMaintenanceBusinessRules>();
             services.AddSingleton<IndividualCustomerBusinessRules>();
             services.AddSingleton<CorporateCustomerBusinessRules>();
+            services.AddSingleton<UserBusinessRules>();
+            services.AddSingleton<ClaimBusinessRules>();
      
             return services;
         }

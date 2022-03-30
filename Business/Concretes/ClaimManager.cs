@@ -1,4 +1,5 @@
 ﻿using Business.Abstracts;
+using Business.BusinessRules;
 using Core.Entities;
 using DataAccess.Abstracts;
 using System;
@@ -13,14 +14,17 @@ namespace Business.Concretes
     {
 
         private IClaimDal _claimDal;
+        ClaimBusinessRules _claimBusinessRules;
 
-        public ClaimManager(IClaimDal claimDal)
+        public ClaimManager(IClaimDal claimDal, ClaimBusinessRules claimBusinessRules)
         {
             _claimDal = claimDal;
+            this._claimBusinessRules = claimBusinessRules;
         }
 
         public void Add(OperationClaim claim)
         {
+            _claimBusinessRules.CheckIfClaimNameExists(claim.Name);
             _claimDal.Add(claim);
         }
 
