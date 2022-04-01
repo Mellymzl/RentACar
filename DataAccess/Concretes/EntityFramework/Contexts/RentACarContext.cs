@@ -22,10 +22,14 @@ namespace DataAccess.Concretes.EntityFramework.Contexts
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Color> Colors { get; set; }
+     
+
         public DbSet<CarMaintenance> CarMaintenances { get; set; }
         public DbSet<AplicationUser> AplicationUsers { get; set; }
         public DbSet<CorporateCustomer> CorporateCustomers { get; set; }
         public DbSet<IndividualCustomer> IndividualCustomers { get; set; }
+        public DbSet<Operation> Operations { get; set; }
+        public DbSet<UserOperation> UserOperations { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

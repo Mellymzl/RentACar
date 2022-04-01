@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.BusinessAspects.Autofac;
 using Business.BusinessRules;
 using Business.Dtos;
 using Business.Request;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Cashing;
 using Core.Utilities.Validation;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -44,7 +46,8 @@ namespace Business.Concretes
             Brand brand_ = _mapper.Map<Brand>(brand);
             _brandDal.Delete(brand_);
         }
-
+       // [CacheAspect]
+       [SecuredOperation("admin")]
         public List<BrandDto> GetAll()
         {
             return _mapper.Map < List< BrandDto >> (_brandDal.GetList());

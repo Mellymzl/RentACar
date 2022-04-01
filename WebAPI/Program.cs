@@ -4,6 +4,7 @@ using Business;
 using Business.Abstracts;
 using Business.Concretes;
 using Business.DependencyResolvers.Autofac;
+using Core.Aspects.Autofac.DependencyResolvers;
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.CrossCuttingConcerns.Security.Encryption;
 using Core.Extensions;
@@ -47,7 +48,7 @@ builder.Services.AddCors(opt => opt.AddDefaultPolicy(p => { p.AllowAnyOrigin().A
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
-//builder.Services.AddDependencyResolvers(new ICoreModule[]);
+builder.Services.AddDependencyResolvers(new ICoreModule[] { new CoreModule() }) ;
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

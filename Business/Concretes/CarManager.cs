@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.BusinessAspects.Autofac;
 using Business.BusinessRules;
 using Business.Dtos;
 using Business.Request;
@@ -48,6 +49,8 @@ namespace Business.Concretes
             _carDal.Delete(car_);
         }
 
+        [SecuredOperation("admin2")]
+      //  [ClaimOparation("car.getAll")]
         public List<CarDto> GetAll()
         {
             return _mapper.Map<List <CarDto>>( _carDal.GetAllWithColorAndBrand());
