@@ -11,6 +11,8 @@ namespace DataAccess.Abstracts
     public interface IUserOperationDal :
         IEntityRepository<UserOperation>
     {
-        List<UserOperation> GetOperationAndUserOperations();
+        List<UserOperation> GetUserOperations();
+        List<UserOperation> GetUserOperations(int userId);
+        UserOperation GetUserOperation(string operation);
     }
 }

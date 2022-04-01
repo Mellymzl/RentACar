@@ -1,4 +1,5 @@
-﻿using Entities.Concretes;
+﻿using Business.Dtos;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace Business.Abstracts
 {
     public interface IUserOperationService
     {
-        List<UserOperation> GetOperationAndUserOperations();
+        List<UserOperationDto> GetUserOperations();
+        List<UserOperationDto> GetUserOperations(int userId);
 
 
     }

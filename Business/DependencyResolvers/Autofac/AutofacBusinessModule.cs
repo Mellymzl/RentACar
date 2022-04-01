@@ -40,6 +40,8 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfCarMaintenanceDal > ().As<ICarMaintenanceDal>();
             builder.RegisterType<EfIndividualCustomerDal>().As<IIndividualCustomerDal>();
             builder.RegisterType<EfCorporateCustomerDal  >().As<ICorporateCustomerDal>();
+            builder.RegisterType<EfUserOperationsDal  >().As<IUserOperationDal>();
+            builder.RegisterType<UserOperationManager  >().As<IUserOperationService>();
            
             builder.RegisterType<CarBusinessRules>();
             builder.RegisterType<ColorBusinessRules>();

@@ -49,8 +49,8 @@ namespace Business.Concretes
             _carDal.Delete(car_);
         }
 
-        [SecuredOperation("admin2")]
-      //  [ClaimOparation("car.getAll")]
+        //[SecuredOperation("admin2")]
+     //  [ClaimOparation("car.getAll")]
         public List<CarDto> GetAll()
         {
             return _mapper.Map<List <CarDto>>( _carDal.GetAllWithColorAndBrand());
