@@ -4,6 +4,8 @@ using Business.BusinessRules;
 using Business.Dtos;
 using Business.Request;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Transaction;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Validation;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -29,10 +31,11 @@ namespace Business.Concretes
             _mapper = mapper;
             _carBusinessRules = carBusinessRules;
         }
-
+         [ValidationAspect(typeof(CreateCarValidator))]
+       //  [TransactionScopeAspect]
         public void Add(CreateCarRequest car)
         {
-            ValidationTool.Validate(new CreateCarValidator(), car);
+           
             _carBusinessRules.CheckIfCarNameExists(car.Name);
             Car car_ = _mapper.Map<Car>(car);
             _carDal.Add(car_);

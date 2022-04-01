@@ -4,6 +4,7 @@ using Business.BusinessRules;
 using Business.Dtos;
 using Business.Request;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Validation;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -29,10 +30,10 @@ namespace Business.Concretes
             _mapper = mapper;   
             _colorBusinessRules = colorBusinessRules;   
         }
-
+        [ValidationAspect(typeof(CreateColorValidator))]
         public void Add(CreateColorRequest color)
         {
-            ValidationTool.Validate(new CreateColorValidator(), color);
+            
             _colorBusinessRules.CheckIfColorNameExists(color.Name);
             Color color_ = _mapper.Map<Color>(color);
             _colorDal.Add(color_);

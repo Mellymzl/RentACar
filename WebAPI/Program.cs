@@ -1,8 +1,13 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Business;
 using Business.Abstracts;
 using Business.Concretes;
+using Business.DependencyResolvers.Autofac;
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.CrossCuttingConcerns.Security.Encryption;
+using Core.Extensions;
+using Core.Utilities.IoC;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -36,8 +41,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 
 });
-builder.Services.AddCors(opt => opt.AddDefaultPolicy(p => { p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); }));
 
+
+builder.Services.AddCors(opt => opt.AddDefaultPolicy(p => { p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); }));
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
+//builder.Services.AddDependencyResolvers(new ICoreModule[]);
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
