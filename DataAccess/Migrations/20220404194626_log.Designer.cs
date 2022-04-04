@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(RentACarContext))]
-    [Migration("20220404174816_log")]
+    [Migration("20220404194626_log")]
     partial class log
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

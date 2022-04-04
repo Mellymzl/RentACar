@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Dtos;
+using Core.Entities;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;

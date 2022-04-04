@@ -1,6 +1,7 @@
 ﻿using Core.Entities;
 
-namespace Entities.Concretes
+namespace Core.Entities
+
 {
     public class UserOperation:IEntity
     {
