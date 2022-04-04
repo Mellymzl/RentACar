@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Aspects.Autofac.DependencyResolvers
+namespace Core
 {
     public class CoreModule : ICoreModule
     {

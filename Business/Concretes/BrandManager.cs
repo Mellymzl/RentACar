@@ -6,6 +6,8 @@ using Business.Dtos;
 using Business.Request;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Cashing;
+using Core.Aspects.Autofac.Logging;
+using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.Utilities.Validation;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -32,7 +34,7 @@ namespace Business.Concretes
             _brandBusinessRoles = brandBusinessRoles;
             
         }
-
+        [LogAspect(typeof(FileLogger))]
         public void Add(CreateBrandRequest brand)
         {
             ValidationTool.Validate(new CreateBrandValidator(), brand);
@@ -47,7 +49,9 @@ namespace Business.Concretes
             _brandDal.Delete(brand_);
         }
        // [CacheAspect]
-       [SecuredOperation("admin")]
+     //  [SecuredOperation("admin")]
+        [LogAspect(typeof(MsSqlLogger))]
+        [LogAspect(typeof(FileLogger))]
         public List<BrandDto> GetAll()
         {
             return _mapper.Map < List< BrandDto >> (_brandDal.GetList());

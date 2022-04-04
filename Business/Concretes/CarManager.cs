@@ -50,7 +50,7 @@ namespace Business.Concretes
         }
 
         //[SecuredOperation("admin2")]
-     //  [ClaimOparation("car.getAll")]
+      [ClaimOparation("car.getAll")]
         public List<CarDto> GetAll()
         {
             return _mapper.Map<List <CarDto>>( _carDal.GetAllWithColorAndBrand());

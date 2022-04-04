@@ -4,8 +4,10 @@ using Business;
 using Business.Abstracts;
 using Business.Concretes;
 using Business.DependencyResolvers.Autofac;
-using Core.Aspects.Autofac.DependencyResolvers;
+using Core;
+using Core.Aspects.Autofac.Logging;
 using Core.CrossCuttingConcerns.Exceptions;
+using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.CrossCuttingConcerns.Security.Encryption;
 using Core.Extensions;
 using Core.Utilities.IoC;
@@ -48,6 +50,10 @@ builder.Services.AddCors(opt => opt.AddDefaultPolicy(p => { p.AllowAnyOrigin().A
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
+builder.Services.AddSingleton<IUserOperationService,UserOperationManager>();
+builder.Services.AddSingleton<IUserOperationDal,EfUserOperationsDal>();
+builder.Services.AddTransient<FileLogger>(); 
+builder.Services.AddTransient<MsSqlLogger>(); 
 builder.Services.AddDependencyResolvers(new ICoreModule[] { new CoreModule() }) ;
 var app = builder.Build();
 // Configure the HTTP request pipeline.
