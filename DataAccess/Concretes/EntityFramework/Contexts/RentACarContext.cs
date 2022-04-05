@@ -30,7 +30,7 @@ namespace DataAccess.Concretes.EntityFramework.Contexts
         public DbSet<IndividualCustomer> IndividualCustomers { get; set; }
         public DbSet<Operation> Operations { get; set; }
         public DbSet<UserOperation> UserOperations { get; set; }
-        public DbSet<Log> Logs { get; set; }
+    
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
