@@ -7,6 +7,7 @@ using Business.Request;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Cashing;
 using Core.Aspects.Autofac.Logging;
+using Core.Aspects.Autofac.Performance;
 using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.Utilities.Validation;
 using DataAccess.Abstracts;
@@ -19,7 +20,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Business.Concretes
-{
+{[PerformanceAspect(4)]
     public class BrandManager : IBrandService
 
     {
